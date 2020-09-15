@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView ans;
     int dotcount=0;
     String exp="";
+    char lastchar=' ';
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,62 +64,89 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v.getId()==R.id.one){
             exp += "1";
             ans.append("1");
+            lastchar='1';
         }
         if(v.getId()==R.id.two){
             exp += "2";
             ans.append("2");
+            lastchar='2';
         }
         if(v.getId()==R.id.three){
             exp += "3";
             ans.append("3");
+            lastchar='3';
         }
         if(v.getId()==R.id.four){
             exp += "4";
             ans.append("4");
+            lastchar='4';
         }
         if(v.getId()==R.id.five){
             exp += "5";
             ans.append("5");
+            lastchar='5';
         }
         if(v.getId()==R.id.six){
             exp += "6";
             ans.append("6");
+            lastchar='6';
         }
         if(v.getId()==R.id.seven){
             exp += "7";
             ans.append("7");
+            lastchar='7';
         }
         if(v.getId()==R.id.eight){
             exp += "8";
             ans.append("8");
+            lastchar='8';
         }
         if(v.getId()==R.id.nine){
             exp += "9";
             ans.append("9");
+            lastchar='9';
         }
         if(v.getId()==R.id.zero){
             exp += "0";
             ans.append("0");
+            lastchar='0';
         }
-        if((v.getId()==R.id.plus)&&exp!=""){
+        if((v.getId()==R.id.plus)&&exp!=""&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*')){
             exp += "+";
             ans.append("+");
+            lastchar='+';
+            if(dotcount==1){
+                dotcount--;
+            }
         }
-        if((v.getId()==R.id.mult)&&exp!=""){
+        if((v.getId()==R.id.mult)&&exp!=""&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*')){
             exp += "*";
             ans.append("*");
+            lastchar='*';
+            if(dotcount==1){
+                dotcount--;
+            }
         }
-        if(v.getId()==R.id.min){
+        if(v.getId()==R.id.min&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*')){
             exp += "-";
             ans.append("-");
+            lastchar='-';
+            if(dotcount==1){
+                dotcount--;
+            }
         }
-        if((v.getId()==R.id.div)&&exp!=""){
+        if((v.getId()==R.id.div)&&exp!=""&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*')){
             exp += "/";
             ans.append("/");
+            lastchar='/';
+            if(dotcount==1){
+                dotcount--;
+            }
         }
         if((v.getId()==R.id.dot)&&dotcount!=1){
             exp += ".";
             ans.append(".");
+            lastchar='.';
             dotcount++;
         }
         if(v.getId()==R.id.clear){
@@ -128,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v.getId()==R.id.eq){
             exp += "=";
             ans.append("=");
-           calculate(exp);
+           exp=String.valueOf(calculate(exp));
         }
     }
 
@@ -143,9 +171,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return exp;
     }
 
-    private void calculate(String exp){
-        double num=0,num1=0,j=0;
-        String tempnum1="",tempnum2="";
+
+    private double calculate(String exp){
+        double num1=0,j=0;
+        double num=0;
+        String tempnum1="";
         char ch=' ',lastop=' ';
       //  Toast.makeText(getApplicationContext(),""+exp.length(),Toast.LENGTH_SHORT).show();
         for(int i=0;i<exp.length();i++){
@@ -241,8 +271,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if((String.valueOf(num)).length()>11){
             ans.setTextSize(35);
         }
-
         ans.setText(""+num);
+        return num;
     }
 
     @Override
