@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        if(ans.getText().toString().length()>8){
+            ans.setTextSize(35);
+        }
         if(v.getId()==R.id.one){
             exp += "1";
             ans.append("1");
@@ -153,10 +156,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             exp=backspace(exp);
         }
 
-        if(v.getId()==R.id.eq){
+        if(v.getId()==R.id.eq&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*'&&lastchar!='.')){
             exp += "=";
             ans.append("=");
            exp=String.valueOf(calculate(exp));
+           dotcount++;
         }
     }
 
@@ -164,6 +168,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String ch= "";
         String ex=exp;
         if (ex != null && ex.length() > 0 ) {
+            if(ex.charAt(ex.length()-1)=='.'){
+                dotcount=0;
+            }
             ex = ex.substring(0, ex.length() - 1);
         }
         exp=ex;
@@ -279,6 +286,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onLongClick(View v) {
         if(v.getId()==R.id.clear){
             exp="";
+            dotcount=0;
             ans.setText("");
             ans.setTextSize(62);
         }
