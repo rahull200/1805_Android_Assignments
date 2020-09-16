@@ -65,57 +65,68 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ans.setTextSize(35);
         }
         if(v.getId()==R.id.one){
-            exp += "1";
+            appendValue('1');
+        //    exp += "1";
             ans.append("1");
             lastchar='1';
         }
         if(v.getId()==R.id.two){
-            exp += "2";
+            appendValue('2');
+        //    exp += "2";
             ans.append("2");
             lastchar='2';
         }
         if(v.getId()==R.id.three){
-            exp += "3";
+            appendValue('3');
+        //    exp += "3";
             ans.append("3");
             lastchar='3';
         }
         if(v.getId()==R.id.four){
-            exp += "4";
+            appendValue('4');
+         //   exp += "4";
             ans.append("4");
             lastchar='4';
         }
         if(v.getId()==R.id.five){
-            exp += "5";
+            appendValue('5');
+        //    exp += "5";
             ans.append("5");
             lastchar='5';
         }
         if(v.getId()==R.id.six){
-            exp += "6";
+            appendValue('6');
+        //    exp += "6";
             ans.append("6");
             lastchar='6';
         }
         if(v.getId()==R.id.seven){
-            exp += "7";
+            appendValue('7');
+        //    exp += "7";
             ans.append("7");
             lastchar='7';
         }
         if(v.getId()==R.id.eight){
-            exp += "8";
+            appendValue('8');
+         //   exp += "8";
             ans.append("8");
             lastchar='8';
         }
         if(v.getId()==R.id.nine){
-            exp += "9";
+            appendValue('9');
+         //   exp += "9";
             ans.append("9");
             lastchar='9';
         }
         if(v.getId()==R.id.zero){
-            exp += "0";
+            appendValue('0');
+         //   exp += "0";
             ans.append("0");
             lastchar='0';
         }
         if((v.getId()==R.id.plus)&&exp!=""&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*')){
-            exp += "+";
+            appendValue('+');
+        //    exp += "+";
             ans.append("+");
             lastchar='+';
             if(dotcount==1){
@@ -123,7 +134,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         if((v.getId()==R.id.mult)&&exp!=""&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*')){
-            exp += "*";
+            appendValue('*');
+        //    exp += "*";
             ans.append("*");
             lastchar='*';
             if(dotcount==1){
@@ -131,7 +143,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         if(v.getId()==R.id.min&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*')){
-            exp += "-";
+            appendValue('-');
+        //    exp += "-";
             ans.append("-");
             lastchar='-';
             if(dotcount==1){
@@ -139,7 +152,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         if((v.getId()==R.id.div)&&exp!=""&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*')){
-            exp += "/";
+            appendValue('/');
+        //    exp += "/";
             ans.append("/");
             lastchar='/';
             if(dotcount==1){
@@ -147,7 +161,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         if((v.getId()==R.id.dot)&&dotcount!=1){
-            exp += ".";
+            appendValue('.');
+        //    exp += ".";
             ans.append(".");
             lastchar='.';
             dotcount++;
@@ -157,11 +172,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if(v.getId()==R.id.eq&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*'&&lastchar!='.')){
-            exp += "=";
+            appendValue('=');
+        //    exp += "=";
             ans.append("=");
            exp=String.valueOf(calculate(exp));
            dotcount++;
         }
+    }
+
+    private void appendValue(char ch) {
+        exp += ch;
+        String tmp = String.valueOf(ch);
+    //    ans.append(tmp);
     }
 
     private String backspace(String exp) {
@@ -177,6 +199,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ans.setText(ex);
         return exp;
     }
+
 
 
     private double calculate(String exp){
