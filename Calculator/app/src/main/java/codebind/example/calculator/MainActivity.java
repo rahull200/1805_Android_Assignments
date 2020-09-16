@@ -206,7 +206,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ans.setTextSize(35);
         }
         ans.setText(""+num);
+        
         return num;
+
     }
 
     private double miniCalculate(double num, char ch, double num1) {
