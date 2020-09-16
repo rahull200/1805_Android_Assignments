@@ -66,105 +66,60 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(v.getId()==R.id.one){
             appendValue('1');
-        //    exp += "1";
-            ans.append("1");
-            lastchar='1';
         }
         if(v.getId()==R.id.two){
             appendValue('2');
-        //    exp += "2";
-            ans.append("2");
-            lastchar='2';
         }
         if(v.getId()==R.id.three){
             appendValue('3');
-        //    exp += "3";
-            ans.append("3");
-            lastchar='3';
         }
         if(v.getId()==R.id.four){
             appendValue('4');
-         //   exp += "4";
-            ans.append("4");
-            lastchar='4';
         }
         if(v.getId()==R.id.five){
             appendValue('5');
-        //    exp += "5";
-            ans.append("5");
-            lastchar='5';
         }
         if(v.getId()==R.id.six){
             appendValue('6');
-        //    exp += "6";
-            ans.append("6");
-            lastchar='6';
         }
         if(v.getId()==R.id.seven){
             appendValue('7');
-        //    exp += "7";
-            ans.append("7");
-            lastchar='7';
         }
         if(v.getId()==R.id.eight){
             appendValue('8');
-         //   exp += "8";
-            ans.append("8");
-            lastchar='8';
         }
         if(v.getId()==R.id.nine){
             appendValue('9');
-         //   exp += "9";
-            ans.append("9");
-            lastchar='9';
         }
         if(v.getId()==R.id.zero){
             appendValue('0');
-         //   exp += "0";
-            ans.append("0");
-            lastchar='0';
         }
         if((v.getId()==R.id.plus)&&exp!=""&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*')){
             appendValue('+');
-        //    exp += "+";
-            ans.append("+");
-            lastchar='+';
             if(dotcount==1){
                 dotcount--;
             }
         }
         if((v.getId()==R.id.mult)&&exp!=""&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*')){
             appendValue('*');
-        //    exp += "*";
-            ans.append("*");
-            lastchar='*';
             if(dotcount==1){
                 dotcount--;
             }
         }
         if(v.getId()==R.id.min&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*')){
             appendValue('-');
-        //    exp += "-";
-            ans.append("-");
-            lastchar='-';
             if(dotcount==1){
                 dotcount--;
             }
         }
         if((v.getId()==R.id.div)&&exp!=""&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*')){
             appendValue('/');
-        //    exp += "/";
-            ans.append("/");
-            lastchar='/';
             if(dotcount==1){
                 dotcount--;
             }
         }
         if((v.getId()==R.id.dot)&&dotcount!=1){
             appendValue('.');
-        //    exp += ".";
-            ans.append(".");
-            lastchar='.';
             dotcount++;
         }
         if(v.getId()==R.id.clear){
@@ -173,17 +128,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(v.getId()==R.id.eq&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*'&&lastchar!='.')){
             appendValue('=');
-        //    exp += "=";
-            ans.append("=");
-           exp=String.valueOf(calculate(exp));
-           dotcount++;
+            exp=String.valueOf(calculate(exp));
+            dotcount++;
         }
     }
+
 
     private void appendValue(char ch) {
         exp += ch;
         String tmp = String.valueOf(ch);
-    //    ans.append(tmp);
+        ans.append(tmp);
+
+        lastchar = ch;
     }
 
     private String backspace(String exp) {
@@ -201,77 +157,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
     private double calculate(String exp){
-        double num1=0,j=0;
+        double num1=0;
         double num=0;
         String tempnum1="";
         char ch=' ',lastop=' ';
       //  Toast.makeText(getApplicationContext(),""+exp.length(),Toast.LENGTH_SHORT).show();
         for(int i=0;i<exp.length();i++){
             ch=exp.charAt(i);
+
             if(ch!='*'&&ch!='+'&&ch!='-'&&ch!='/'&&ch!='='){
                 tempnum1 += ch;
             }
-
-            if((ch=='+')||(ch=='-')||(ch=='*')||(ch=='/')){
+            else if((ch=='+')||(ch=='-')||(ch=='*')||(ch=='/')){
 
                 if(tempnum1==""&&ch=='-'){
                     tempnum1 += "-";
-                }
-                else{
+
+                }else{
 
                     num1= Double.parseDouble(tempnum1);
 
                     if(lastop!=' '){
+                        num = miniCalculate(num,lastop,num1);
                         //   Toast.makeText(getApplicationContext(),"hii"+num,Toast.LENGTH_SHORT).show();
-                        if(lastop=='+'){
-                            num += num1;
-                        }
-                        if(lastop=='-'){
-                            num -= num1;
-                        }
-                        if(lastop=='/'){
-                            num /= num1;
-                        }
-                        if(lastop=='*'){
-                            num *= num1;
-                        }
-
                     }
                     else {
-                        if(ch=='+'){
-                            if(num==0){
-                                num=num1;
-                            }else{
-                                num = num + num1;
-                            }
-                            //  break;
-                        }
-                        if(ch=='-'){
-                            if(num==0){
-                                num=num1;
-                            }else{
-                                num = num - num1;
-                            }
-                            //  break;
-                        }
-                        if(ch=='*'){
-                            if(num==0){
-                                num=num1;
-                            }else{
-                                num = num * num1;
-                            }
-
-                            //  break;
-                        }
-                        if(ch=='/'){
-                            if(num==0){
-                                num=num1;
-                            }else{
-                                num = num / num1;
-                            }
-                            //  break;
+                        if(num==0){
+                            num = num1;
+                        }else{
+                            num = miniCalculate(num,ch,num1);
                         }
                     }
                     lastop=ch;
@@ -279,21 +194,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 }
             }
-
-            if(ch=='='){
+            else if(ch=='='){
                 num1= Double.parseDouble(tempnum1);
-                if(lastop=='+'){
-                    num += num1;
-                }
-                if(lastop=='-'){
-                    num -= num1;
-                }
-                if(lastop=='/'){
-                    num /= num1;
-                }
-                if(lastop=='*'){
-                    num *= num1;
-                }
+                num = miniCalculate(num,lastop,num1);
+
                 break;
             }
         }
@@ -302,6 +206,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ans.setTextSize(35);
         }
         ans.setText(""+num);
+        return num;
+    }
+
+    private double miniCalculate(double num, char ch, double num1) {
+            if(ch=='+'){
+                num += num1;
+            }
+            if(ch=='-'){
+                num -= num1;
+            }
+            if(ch=='/'){
+                num /= num1;
+            }
+            if(ch=='*'){
+                num *= num1;
+            }
+
         return num;
     }
 
