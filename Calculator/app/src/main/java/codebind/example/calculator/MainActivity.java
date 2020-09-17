@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             exp=backspace(exp);
         }
 
-        if(v.getId()==R.id.eq&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*'&&lastchar!='.')){
+        if(v.getId()==R.id.eq&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*'&&lastchar!='.')&&exp!=""){
             appendValue('=');
             exp=String.valueOf(calculate(exp));
             dotcount++;
@@ -152,14 +152,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ex = ex.substring(0, ex.length() - 1);
         }
         exp=ex;
+        if(exp==""){
+            lastchar = ' ';
+        }
         ans.setText(ex);
         return exp;
     }
 
 
     private double calculate(String exp){
-        double num1=0;
-        double num=0;
+        Double num1=0.0;
+        Double num=0.0 ;
         String tempnum1="";
         char ch=' ',lastop=' ';
       //  Toast.makeText(getApplicationContext(),""+exp.length(),Toast.LENGTH_SHORT).show();
@@ -176,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 }else{
 
-                    num1= Double.parseDouble(tempnum1);
+                    num1= Double.valueOf(tempnum1);
 
                     if(lastop!=' '){
                         num = miniCalculate(num,lastop,num1);
@@ -195,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
             else if(ch=='='){
-                num1= Double.parseDouble(tempnum1);
+                num1= Double.valueOf(tempnum1);
                 num = miniCalculate(num,lastop,num1);
 
                 break;
@@ -235,6 +238,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             dotcount=0;
             ans.setText("");
             ans.setTextSize(62);
+            lastchar =' ';
         }
         return false;
     }
