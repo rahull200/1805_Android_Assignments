@@ -7,51 +7,52 @@
     android:orientation="vertical"
     tools:context=".MainActivity"
     android:gravity="bottom">
-
-<LinearLayout
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <Button
+    android:minHeight="300dp"
+    android:fillViewport="true"
+    android:layout_gravity="end">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="2" />
-    >
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="1"/>
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/views"
+        android:gravity="bottom">
+    </LinearLayout>
+
+</ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_gravity="bottom"
-        >
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Red"
+            android:text="Add Red"
             android:id="@+id/red"
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yellow"
+            android:text="Add Yellow"
             android:id="@+id/yellow"
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Green"
+            android:text="Add Green"
             android:id="@+id/green"
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Blue"
+            android:text="Add Blue"
             android:id="@+id/blue"
             />
     </LinearLayout>
