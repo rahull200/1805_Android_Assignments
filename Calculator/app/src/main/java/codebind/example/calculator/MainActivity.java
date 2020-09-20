@@ -14,8 +14,8 @@ import java.text.DecimalFormat;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
     Button one,two,three,four,five,six,seven,eight,nine,zero,mult,div,plus,min,clear,eq,dot;
     TextView ans;
-    int dotcount=0;
-    String exp="";
+    int dotcount=0; //count od dots
+    String exp=""; // Expression string
     char lastchar=' ';
     @Override
     protected void onCreate(Bundle savedInstanceState) {
