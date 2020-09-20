@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
     Button one,two,three,four,five,six,seven,eight,nine,zero,mult,div,plus,min,clear,eq,dot;
     TextView ans;
@@ -91,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v.getId()==R.id.nine){
             appendValue('9');
         }
-        if(v.getId()==R.id.zero){
+        if(v.getId()==R.id.zero&&exp.equals("0")==false){
             appendValue('0');
         }
         if((v.getId()==R.id.plus)&&exp!=""&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*')){
@@ -106,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 dotcount--;
             }
         }
-        if(v.getId()==R.id.min&&(lastchar!='+'&&lastchar!='-'&&lastchar!='/'&&lastchar!='*')){
+        if(v.getId()==R.id.min&&(lastchar!='+'&&lastchar!='-')){
             appendValue('-');
             if(dotcount==1){
                 dotcount--;
@@ -133,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
+    // Append character to exp
     private void appendValue(char ch) {
         exp += ch;
         String tmp = String.valueOf(ch);
@@ -142,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lastchar = ch;
     }
 
+    // Clear last character from exp
     private String backspace(String exp) {
         String ch= "";
         String ex=exp;
@@ -149,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if(ex.charAt(ex.length()-1)=='.'){
                 dotcount=0;
             }
+
             ex = ex.substring(0, ex.length() - 1);
         }
         exp=ex;
@@ -159,78 +164,326 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return exp;
     }
 
-
+    // Calculate exp
     private double calculate(String exp){
-        Double num1=0.0;
-        Double num=0.0 ;
-        String tempnum1="";
-        char ch=' ',lastop=' ';
-      //  Toast.makeText(getApplicationContext(),""+exp.length(),Toast.LENGTH_SHORT).show();
+        String finans ="";
+
+        exp = divide(exp);
+        exp = multiply(exp);
+        exp = add(exp);
+        exp = subtract(exp);
+
+        finans = getFinalstring(exp);
+
+        ans.setText(" "+finans);
+
+        return Double.valueOf(finans);
+
+    }
+
+    // Get final exp
+    private String getFinalstring(String exp) {
+        String finans="";
         for(int i=0;i<exp.length();i++){
-            ch=exp.charAt(i);
-
-            if(ch!='*'&&ch!='+'&&ch!='-'&&ch!='/'&&ch!='='){
-                tempnum1 += ch;
-            }
-            else if((ch=='+')||(ch=='-')||(ch=='*')||(ch=='/')){
-
-                if(tempnum1==""&&ch=='-'){
-                    tempnum1 += "-";
-
-                }else{
-
-                    num1= Double.valueOf(tempnum1);
-
-                    if(lastop!=' '){
-                        num = miniCalculate(num,lastop,num1);
-                        //   Toast.makeText(getApplicationContext(),"hii"+num,Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        if(num==0){
-                            num = num1;
-                        }else{
-                            num = miniCalculate(num,ch,num1);
-                        }
-                    }
-                    lastop=ch;
-                    tempnum1="";
-
-                }
-            }
-            else if(ch=='='){
-                num1= Double.valueOf(tempnum1);
-                num = miniCalculate(num,lastop,num1);
-
+            if(exp.charAt(i)=='='){
                 break;
             }
+            finans += exp.charAt(i);
         }
-        dotcount = 0;
-        if((String.valueOf(num)).length()>11){
-            ans.setTextSize(35);
+        if(finans.charAt(0)=='+'){
+            finans = finans.substring(1,finans.length()-1);
         }
-        ans.setText(""+num);
-        
-        return num;
-
+        return finans;
     }
 
-    private double miniCalculate(double num, char ch, double num1) {
-            if(ch=='+'){
-                num += num1;
-            }
-            if(ch=='-'){
-                num -= num1;
-            }
-            if(ch=='/'){
-                num /= num1;
-            }
-            if(ch=='*'){
-                num *= num1;
-            }
+    private String divide(String exp) {
+        int j,k;
+        String minexp="";
+        Double subans = 0.0;
+        String tempnum1="",num1="",num2="";
+        int validflag=1;
+        char lastchar = ' ';
+            while(validflag>0){
 
-        return num;
+                for(int i=0;i<exp.length();i++){
+                    validflag = 0;
+                    boolean minpresent = false;
+                    if(exp.charAt(i)=='/'&&i!=0){
+                        validflag++;
+                        //get num2
+                        j=i+1;
+                        num2 = getNum2(j,exp,i);
+
+                        //get num1
+                        j=i-1;
+                        while(j>=0&&exp.charAt(j)!='+'&&exp.charAt(j)!='/'&&exp.charAt(j)!='*'&&exp.charAt(j)!='='){
+                            if(exp.charAt(j)=='-'){
+                                minpresent = true;
+                                break;
+                            }else{
+                                tempnum1 += exp.charAt(j);
+                                j--;
+                            }
+
+                        }
+                        if(j>0){
+                            lastchar =exp.charAt(j);
+                        }
+                        for(k=tempnum1.length()-1;k>=0;k--){
+                            num1 += tempnum1.charAt(k);
+                        }
+                        //check if num1 is negative
+                        if(minpresent){
+                            num1 = "-"+num1;
+                        }
+                        // Calculate and update exp
+                        minexp = num1 + "/" + num2;
+                        subans = Double.valueOf(num1) / Double.valueOf(num2);
+                        //check if sub answer after division is too large
+                        if(subans.toString().length()>11){
+                            DecimalFormat df = new DecimalFormat("#.#########");
+                            df.setRoundingMode(RoundingMode.CEILING);
+                            String s = df.format(subans);
+                            subans =Double.valueOf(s);
+                        }
+
+                        exp=updateString(exp,minexp,subans,lastchar);
+                        break;
+                    }
+                    num1="";
+                    num2="";
+                    tempnum1="";
+                }
+                if(validflag==0){
+                    break;
+                }
+
+            }
+        return exp;
     }
 
+    private String multiply(String exp) {
+        int j,k;
+        String minexp="";
+        Double subans = 0.0;
+        String tempnum1="",num1="",num2="";
+        int validflag=1;
+        char lastchar = ' ';
+        while(validflag>0){
+
+            for(int i=0;i<exp.length();i++){
+                validflag = 0;
+                boolean minpresent = false;
+                if(exp.charAt(i)=='*'&&i>0){
+                    validflag++;
+                    //get num2
+                    j=i+1;
+                    num2 = getNum2(j,exp,i);
+
+                    //get num1
+                    j=i-1;
+                    while(j>=0&&exp.charAt(j)!='+'&&exp.charAt(j)!='/'&&exp.charAt(j)!='*'&&exp.charAt(j)!='='){
+                        if(exp.charAt(j)=='-'){
+                            minpresent = true;
+                            break;
+                        }else{
+                            tempnum1 += exp.charAt(j);
+                            j--;
+                        }
+
+                    }
+                    if(j>0){
+                        lastchar =exp.charAt(j);
+                    }
+                    for(k=tempnum1.length()-1;k>=0;k--){
+                        num1 += tempnum1.charAt(k);
+                    }
+                    //check if num1 is negative
+                    if(minpresent){
+                        num1 = "-"+num1;
+                    }
+                    // Calculate and update exp
+                    minexp = num1 + "*" + num2;
+                    subans = Double.valueOf(num1) * Double.valueOf(num2);
+                    exp=updateString(exp,minexp,subans,lastchar);
+                    break;
+                }
+
+            }
+            num1="";
+            num2="";
+            tempnum1="";
+            if(validflag==0){
+                break;
+            }
+
+        }
+        return exp;
+    }
+
+
+
+    private String add(String exp) {
+        int j,k;
+        String minexp="";
+        Double subans = 0.0;
+        String tempnum1="",num1="",num2="";
+        int validflag=1;
+        char lastchar = ' ';
+        while(validflag>0){
+
+            for(int i=0;i<exp.length();i++){
+                validflag = 0;
+                boolean minpresent = false;
+                if(exp.charAt(i)=='+'&&i!=0){
+                    validflag++;
+                    //get num2
+                    j=i+1;
+                    num2 = getNum2(j,exp,i);
+
+                    //get num1
+                    j=i-1;
+                    while(j>=0&&exp.charAt(j)!='+'&&exp.charAt(j)!='/'&&exp.charAt(j)!='*'&&exp.charAt(j)!='='){
+                        if(exp.charAt(j)=='-'){
+                            minpresent = true;
+                            break;
+                        }else{
+                            tempnum1 += exp.charAt(j);
+                            j--;
+                        }
+
+                    }
+                    if(j>0){
+                        lastchar =exp.charAt(j);
+                    }
+                    for(k=tempnum1.length()-1;k>=0;k--){
+                        num1 += tempnum1.charAt(k);
+                    }
+
+                    //check if num1 is negative
+                    if(minpresent){
+                        num1 = "-"+num1;
+                    }
+                    // Calculate and update exp
+                    minexp = num1 + "+" + num2;
+                    subans = Double.valueOf(num1) + Double.valueOf(num2);
+                    exp=updateString(exp,minexp,subans,lastchar);
+                    break;
+                }
+                num1="";
+                num2="";
+                tempnum1="";
+            }
+            if(validflag==0){
+                break;
+            }
+
+        }
+        return exp;
+    }
+
+    private String subtract(String exp) {
+        int j,k;
+        String minexp="";
+        Double subans = 0.0;
+        String tempnum1="",num1="",num2="";
+        int validflag=1;
+        char lastchar = ' ';
+        while(validflag>0){
+
+            for(int i=0;i<exp.length();i++){
+                validflag = 0;
+                boolean minpresent = false;
+                if(exp.charAt(i)=='-'&&i!=0&&i-1>=0&&exp.charAt(i-1)!='+'&&exp.charAt(i-1)!='-'&&exp.charAt(i-1)!='/'&&exp.charAt(i-1)!='*'){
+                    validflag++;
+                    //get num2
+                    j=i+1;
+                    num2 = getNum2(j,exp,i);
+
+
+                    //get num1
+                    j=i-1;
+                    while(j>=0&&exp.charAt(j)!='+'&&exp.charAt(j)!='/'&&exp.charAt(j)!='*'&&exp.charAt(j)!='='){
+                        if(exp.charAt(j)=='-'){
+                            minpresent = true;
+                            break;
+                        }else{
+                            tempnum1 += exp.charAt(j);
+                            j--;
+                        }
+
+                    }
+                    if(j>0){
+                        lastchar =exp.charAt(j);
+                    }
+                    for(k=tempnum1.length()-1;k>=0;k--){
+                        num1 += tempnum1.charAt(k);
+                    }
+                    //check if num1 is negative
+                    if(minpresent){
+                        num1 = "-"+num1;
+                    }
+                    // Calculate and update exp
+                    minexp = num1 + "-" + num2;
+                    subans = Double.valueOf(num1) - Double.valueOf(num2);
+                    exp=updateString(exp,minexp,subans,lastchar);
+                    break;
+                }
+            }
+            num1="";
+            num2="";
+            tempnum1="";
+            if(validflag==0){
+                break;
+            }
+
+        }
+        return exp;
+    }
+
+    // Get 2nd operand in operation
+    private String getNum2(int j, String exp,int i) {
+        String num2 = "";
+
+        while(exp.charAt(j)!='+'&&exp.charAt(j)!='-'&&exp.charAt(j)!='/'&&exp.charAt(j)!='*'&&exp.charAt(j)!='='){
+            if(j>i+1&&exp.charAt(j)=='-'){
+                break;
+            }
+            num2 += exp.charAt(j);
+            j++;
+        }
+        return num2;
+    }
+
+    // Update exp
+    private String updateString(String exp, String minexp,Double subans,char lastchar) {
+        String sub = subans.toString();
+
+        if(lastchar=='+'&&subans>=0){
+            exp = exp.replace(minexp, sub);
+        }else if(lastchar=='-'&&subans>=0){
+            exp = exp.replace(minexp, "+"+sub);
+        }else if(lastchar=='*'&&subans>=0){
+            exp = exp.replace(minexp, sub);
+        }else if(lastchar=='/'&&subans>=0){
+            exp = exp.replace(minexp, sub);
+        }
+        else if(lastchar=='+'&&subans<0){
+            exp = exp.replace("+"+minexp, sub);
+        }else if(lastchar=='-'&&subans<0){
+            String sub2 = sub.substring(1, sub.length()-1);
+            exp = exp.replace(minexp, sub);
+        }else if(lastchar=='*'&&subans<0){
+            exp = exp.replace(minexp, sub);
+        }else if(lastchar=='/'&&subans<0){
+            exp = exp.replace(minexp, sub);
+        }else if(lastchar==' '){
+            exp = exp.replace(minexp, sub);
+        }
+        return exp;
+    }
+
+    // Clear everything on long click
     @Override
     public boolean onLongClick(View v) {
         if(v.getId()==R.id.clear){

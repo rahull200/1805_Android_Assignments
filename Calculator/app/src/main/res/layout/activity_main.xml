@@ -168,15 +168,18 @@
                 <Button
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:textSize="22pt"
+                    android:textSize="20pt"
+                    android:padding="20dp"
                     android:background="@color/dblack"
                     android:textColor="@color/white"
-                    android:id="@+id/eq"
-                    android:text="@string/eq"></Button>
+                    android:layout_gravity="right"
+                    android:gravity="center"
+                    android:id="@+id/clear"
+                    android:text="C"></Button>
                 <Button
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:textSize="22pt"
+                    android:textSize="26pt"
                     android:background="@color/dblack"
                     android:textColor="@color/white"
                     android:id="@+id/plus"
@@ -195,18 +198,16 @@
                 android:layout_gravity="right"
                 android:gravity="right"
                 >
+
                 <Button
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:textSize="8pt"
-                    android:padding="20dp"
-                    android:background="@color/dblack"
+                    android:textSize="22pt"
+                    android:paddingBottom="4dp"
+                    android:background="@color/orange"
                     android:textColor="@color/white"
-                    android:layout_gravity="right"
-                    android:gravity="right"
-                    android:id="@+id/clear"
-                    android:text="@string/clear"></Button>
-
+                    android:id="@+id/eq"
+                    android:text="@string/eq"></Button>
             </TableRow>
         </TableLayout>
     </LinearLayout>
