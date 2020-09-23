@@ -24,17 +24,26 @@
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:gravity="center">
 
+<ImageView
+    android:layout_width="200dp"
+    android:layout_height="150dp"
+    android:src="@drawable/top"/>
 
 </LinearLayout>
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="30dp"
-        >
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="30dp"
+            >
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -54,75 +63,79 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxBackgroundMode="outline">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:drawableStart="@drawable/ic_baseline_phone_24"
-                android:drawablePadding="4dp"
-                android:hint="Number"/>
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxBackgroundMode="outline">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:drawableStart="@drawable/ic_baseline_phone_24"
+                    android:drawablePadding="4dp"
+                    android:hint="Number"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxBackgroundMode="outline">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:drawableStart="@drawable/ic_baseline_email_24"
-                android:drawablePadding="4dp"
-                android:hint="Email"/>
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxBackgroundMode="outline">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:drawableStart="@drawable/ic_baseline_email_24"
+                    android:drawablePadding="4dp"
+                    android:hint="Email"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxBackgroundMode="outline">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_lock_24"
-                android:inputType="textPassword"
-                android:drawablePadding="4dp"
-                android:hint="Password"/>
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxBackgroundMode="outline">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_lock_24"
+                    android:inputType="textPassword"
+                    android:drawablePadding="4dp"
+                    android:hint="Password"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxBackgroundMode="outline">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_lock_24"
-                android:inputType="textPassword"
-                android:drawablePadding="4dp"
-                android:hint="Re-enter password"/>
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxBackgroundMode="outline">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_lock_24"
+                    android:inputType="textPassword"
+                    android:drawablePadding="4dp"
+                    android:hint="Re-enter password"/>
 
-    </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 
 
 
