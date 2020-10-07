@@ -12,12 +12,14 @@ import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends AppCompatActivity {
     ViewPager vp;
     Toolbar tb;
+    String name,num,em,pass1,pass2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +35,28 @@ public class MainActivity extends AppCompatActivity {
         vp.setAdapter(fpa);
 
         Profile profile = new Profile();
+        name = profile.getName();
+        em = profile.getEmail();
+        num = profile.getNumber();
+        pass1 = profile.getPass1();
+        pass2 = profile.getPass2();
         
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.action_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.action_tick){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
         public MyPagerAdapter(FragmentManager fm) {
@@ -45,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             if(position==0){
-                return Register.newInstance();
+                return Register.newInstance(name,num,em,pass1,pass2);
             }
             else if(position==1){
                 return ViewUser.newInstance();
@@ -70,21 +92,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.action_bar,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId()==R.menu.action_bar) {
-            TextInputEditText name = (TextInputEditText)findViewById(R.id.name);
-
-            Profile profile = new Profile();
-            name.setText(profile.getName());
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

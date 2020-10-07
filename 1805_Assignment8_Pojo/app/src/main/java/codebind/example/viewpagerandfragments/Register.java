@@ -21,15 +21,20 @@ import com.google.android.material.textfield.TextInputEditText;
 
 
 public class Register extends Fragment {
-
+    static String name,num,em,pass1,pass2;
     public Register() {
     }
 
     // TODO: Rename and change types and number of parameters
-    public static Register newInstance() {
+    public static Register newInstance(String iname,String inum,String iem,String ip1,String ip2) {
         Register fragment = new Register();
         Bundle args = new Bundle();
         fragment.setArguments(args);
+        name = iname;
+        num = inum;
+        em = iem;
+        pass1 = ip1;
+        pass2 =ip2;
         return fragment;
     }
 
@@ -50,17 +55,16 @@ public class Register extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        TextInputEditText name = (TextInputEditText)view.findViewById(R.id.name);
-        TextInputEditText num = (TextInputEditText)view.findViewById(R.id.num);
-        TextInputEditText em = (TextInputEditText)view.findViewById(R.id.email);
-        TextInputEditText pass1 = (TextInputEditText)view.findViewById(R.id.pass1);
-        TextInputEditText pass2 = (TextInputEditText)view.findViewById(R.id.pass2);
-        Profile profile = new Profile();
-        name.setText(profile.getName());
-        num.setText(profile.getNumber());
-        em.setText(profile.getEmail());
-        pass1.setText(profile.getPass1());
-        pass2.setText(profile.getPass2());
+        TextInputEditText ipname = (TextInputEditText)view.findViewById(R.id.name);
+        TextInputEditText ipnum = (TextInputEditText)view.findViewById(R.id.num);
+        TextInputEditText ipem = (TextInputEditText)view.findViewById(R.id.email);
+        TextInputEditText ippass1 = (TextInputEditText)view.findViewById(R.id.pass1);
+        TextInputEditText ippass2 = (TextInputEditText)view.findViewById(R.id.pass2);
+        ipname.setText(name);
+        ipem.setText(em);
+        ipnum.setText(num);
+        ippass1.setText(pass1);
+        ippass2.setText(pass2);
         super.onViewCreated(view, savedInstanceState);
     }
 
