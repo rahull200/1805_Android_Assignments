@@ -16,13 +16,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ViewUser extends Fragment implements View.OnClickListener {
-    Toolbar tb;
     TextInputEditText calender;
     public ViewUser() {
         // Required empty public constructor
@@ -46,44 +46,41 @@ public class ViewUser extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_view_user, container, false);
     }
 
 
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.mal:
-                if (checked)
-                    Toast.makeText(getActivity(),"hi",Toast.LENGTH_LONG);
-                // Pirates are the best
-                break;
-            case R.id.fem:
-                if (checked)
-                    // Ninjas rule
-                    break;
-            case R.id.oth:
-                if (checked)
-                    // Ninjas rule
-                    break;
-        }
-    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        tb = (Toolbar)view.findViewById(R.id.action);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(tb);
-
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setSpinner(view);
 
         calender = (TextInputEditText)view.findViewById(R.id.calender);
         calender.setOnClickListener(this);
+
+        RadioGroup radioGroup = (RadioGroup) view .findViewById(R.id.rg);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // checkedId is the RadioButton selected
+                switch(checkedId) {
+                    case R.id.mal:
+                        // switch to fragment 1
+                        break;
+                    case R.id.fem:
+                        // Fragment 2
+                    case R.id.oth:
+                        // Fragment 2
+                        break;
+                }
+            }
+        });
 
         super.onViewCreated(view, savedInstanceState);
     }

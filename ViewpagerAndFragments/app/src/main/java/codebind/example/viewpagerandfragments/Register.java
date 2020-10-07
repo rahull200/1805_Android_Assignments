@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 
 public class Register extends Fragment {
-    Toolbar tb;
+
     public Register() {
     }
 
@@ -47,9 +47,7 @@ public class Register extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        tb = (Toolbar)view.findViewById(R.id.action);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(tb);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         super.onViewCreated(view, savedInstanceState);
     }
