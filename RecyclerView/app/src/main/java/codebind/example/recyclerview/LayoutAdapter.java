@@ -1,6 +1,5 @@
 package codebind.example.recyclerview;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -11,14 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.security.AccessControlContext;
 import java.util.ArrayList;
-
-import static java.security.AccessController.getContext;
 
 public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.LayoutviewHolder> {
 
@@ -61,7 +55,7 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.Layoutview
             params.gravity = Gravity.RIGHT;
             parent.setLayoutParams(params);
         }else{
-            parent.setBackgroundColor(Color.parseColor("#666666"));
+            parent.setBackgroundColor(Color.parseColor("#595959"));
         }
 
     }

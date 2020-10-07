@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
         layout.add(new Layout("Jerry","Hii"));
         layout.add(new Layout("Tom","Hellooo"));
         layout.add(new Layout("Jerry","Hii"));
+        layout.add(new Layout("Jerry","Hii"));
+        layout.add(new Layout("Tom","Hellooo"));
+        layout.add(new Layout("Jerry","Hii"));
+        layout.add(new Layout("Tom","Hellooo"));
+        layout.add(new Layout("Jerry","Hii"));
         recyclerView = (RecyclerView)findViewById(R.id.resview);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -40,5 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(resadapter);
+
+
+
     }
 }
