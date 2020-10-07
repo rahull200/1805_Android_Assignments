@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    android:id="@+id/msgcard"
+    android:padding="10dp"
+    android:layout_margin="5dp">
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="5dp"
+    android:paddingRight="50dp"
+    android:layout_margin="4dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sender_name"
+        android:text="Ram"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:textSize="10pt"
+        android:padding="2dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/msg"
+        android:textColor="#ffffff"
+        android:text="Hi how are you ?"
+        android:textSize="8pt"
+        android:padding="2dp"/>
+
+</LinearLayout>
+</androidx.cardview.widget.CardView>
