@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         ArrayList<Layout> layout = new ArrayList<>();
         layout.add(new Layout("Tom","Hellooo"));
         layout.add(new Layout("Jerry","Hii"));

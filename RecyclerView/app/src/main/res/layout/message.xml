@@ -15,15 +15,13 @@
     android:paddingLeft="5dp"
     android:paddingRight="50dp"
     android:layout_margin="4dp">
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/sender_name"
-        android:text="Ram"
         android:textStyle="bold"
         android:textColor="#ffffff"
-        android:textSize="10pt"
+        android:textSize="0pt"
         android:padding="2dp"/>
     <TextView
         android:layout_width="wrap_content"
@@ -31,7 +29,7 @@
         android:id="@+id/msg"
         android:textColor="#ffffff"
         android:text="Hi how are you ?"
-        android:textSize="8pt"
+        android:textSize="9pt"
         android:padding="2dp"/>
 
 </LinearLayout>
