@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -19,7 +20,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class MainActivity extends AppCompatActivity {
     ViewPager vp;
     Toolbar tb;
-    String name,num,em,pass1,pass2;
+    String name,num,em,pass1,pass2,gender,birthday,district;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         num = profile.getNumber();
         pass1 = profile.getPass1();
         pass2 = profile.getPass2();
+        gender = profile.getGender();
+        birthday = profile.getBirthday();
+        district = profile.getDistrict();
+
         
     }
 
@@ -70,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 return Register.newInstance(name,num,em,pass1,pass2);
             }
             else if(position==1){
-                return ViewUser.newInstance();
+                return ViewUser.newInstance(name,gender,birthday,district);
             }
             return null;
         }

@@ -6,6 +6,23 @@ public class Profile {
     final static String email = "ram@gmail.com";
     final static String pass1 = "123";
     final static String pass2 = "123";
+    final static String gender = "Male";
+    final static String birthday = "05/06/1996";
+    final static String district = "South Goa";
+
+
+    public static String getGender() {
+        return gender;
+    }
+
+    public static String getBirthday() {
+        return birthday;
+    }
+
+    public static String getDistrict() {
+        return district;
+    }
+
     public Profile() {
     }
 

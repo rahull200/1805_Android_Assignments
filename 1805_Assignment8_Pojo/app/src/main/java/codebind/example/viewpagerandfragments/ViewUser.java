@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -18,21 +19,30 @@ import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ViewUser extends Fragment implements View.OnClickListener {
     TextInputEditText calender;
+    RadioGroup radioGroup;
+    Spinner sp;
+    TextView uname;
+    static String gender,name,bday,district;
     public ViewUser() {
         // Required empty public constructor
     }
 
     // TODO: Rename and change types and number of parameters
-    public static ViewUser newInstance() {
+    public static ViewUser newInstance(String iname,String igender,String ibday,String idistrict) {
         ViewUser fragment = new ViewUser();
         Bundle args = new Bundle();
         fragment.setArguments(args);
+        gender = igender;
+        name = iname;
+        bday = ibday;
+        district = idistrict;
         return fragment;
     }
 
@@ -59,11 +69,12 @@ public class ViewUser extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         setSpinner(view);
+        uname = (TextView)view.findViewById(R.id.uname);
 
         calender = (TextInputEditText)view.findViewById(R.id.calender);
         calender.setOnClickListener(this);
 
-        RadioGroup radioGroup = (RadioGroup) view .findViewById(R.id.rg);
+        radioGroup = (RadioGroup) view .findViewById(R.id.rg);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
@@ -82,11 +93,39 @@ public class ViewUser extends Fragment implements View.OnClickListener {
             }
         });
 
+
+        setVariables();
+
         super.onViewCreated(view, savedInstanceState);
     }
 
+    private void setVariables() {
+//Gender
+        if(gender.equals("Male")){
+            radioGroup.check(R.id.mal);
+        }else if(gender.equals("Female")){
+            radioGroup.check(R.id.fem);
+        }else if(gender.equals("Other")){
+            radioGroup.check(R.id.oth);
+        }
+
+        //Name
+        uname.setText(name);
+
+        //Bday
+        calender.setText(bday);
+
+        //District
+        if(district.equals("North Goa")){
+            sp.setSelection(0);
+        }else if(district.equals("South Goa")){
+            sp.setSelection(1);
+        }
+
+    }
+
     private void setSpinner(View view) {
-        Spinner sp = (Spinner)view.findViewById(R.id.spin);
+        sp = (Spinner)view.findViewById(R.id.spin);
         ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(getActivity(),R.array.dist,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp.setAdapter(adapter);
@@ -105,4 +144,5 @@ public class ViewUser extends Fragment implements View.OnClickListener {
             db.show();
         }
     }
+
 }
