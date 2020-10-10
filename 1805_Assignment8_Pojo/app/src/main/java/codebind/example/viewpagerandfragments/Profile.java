@@ -10,7 +10,6 @@ public class Profile {
     final static String birthday = "05/06/1996";
     final static String district = "South Goa";
 
-
     public static String getGender() {
         return gender;
     }
