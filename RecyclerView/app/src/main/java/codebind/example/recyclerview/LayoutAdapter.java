@@ -38,7 +38,7 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.Layoutview
     @Override
     public LayoutviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutviewHolder lvh=null;
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.message,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.messageto,parent,false);
         lvh = new LayoutviewHolder(v);
 
         return lvh;
