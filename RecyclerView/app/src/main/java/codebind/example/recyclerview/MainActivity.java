@@ -24,21 +24,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Layout> layout = new ArrayList<>();
         layout.add(new Layout("Tom","Hellooo"));
         layout.add(new Layout("Jerry","Hii"));
-        layout.add(new Layout("Tom","Hellooo"));
-        layout.add(new Layout("Jerry","Hii"));
-        layout.add(new Layout("Tom","Hellooo"));
-        layout.add(new Layout("Jerry","Hii"));
-        layout.add(new Layout("Tom","Hellooo"));
-        layout.add(new Layout("Jerry","Hii"));
-        layout.add(new Layout("Tom","Hellooo"));
-        layout.add(new Layout("Jerry","Hii"));
-        layout.add(new Layout("Tom","Hellooo"));
-        layout.add(new Layout("Jerry","Hii"));
-        layout.add(new Layout("Jerry","Hii"));
-        layout.add(new Layout("Tom","Hellooo"));
-        layout.add(new Layout("Jerry","Hii"));
-        layout.add(new Layout("Tom","Hellooo"));
-        layout.add(new Layout("Jerry","Hii"));
+
         recyclerView = (RecyclerView)findViewById(R.id.resview);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);

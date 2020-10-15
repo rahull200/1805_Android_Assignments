@@ -1,6 +1,7 @@
 package codebind.example.recyclerview;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.LayoutviewHolder> {
-
+    public int pos;
     private ArrayList<Layout> mlayout;
     public static class LayoutviewHolder extends RecyclerView.ViewHolder{
 
@@ -36,27 +37,20 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.Layoutview
     @NonNull
     @Override
     public LayoutviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutviewHolder lvh=null;
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.message,parent,false);
-        LayoutviewHolder lvh = new LayoutviewHolder(v);
+        lvh = new LayoutviewHolder(v);
+
         return lvh;
     }
 
     @Override
     public void onBindViewHolder(@NonNull LayoutviewHolder holder, int position) {
+        pos = position;
         Layout currentlayout =mlayout.get(position);
         holder.sender.setText(currentlayout.getSender_name());
         holder.msg.setText(currentlayout.getSender_msg());
-
-        CardView parent = (CardView) ((ViewGroup) holder.sender.getParent()).getParent();
-        if(currentlayout.getSender_name().equals("Tom")){
-            parent.setBackgroundColor(Color.parseColor("#6C3FBD"));
-
-            CardView.LayoutParams params = new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.WRAP_CONTENT);
-            params.gravity = Gravity.RIGHT;
-            parent.setLayoutParams(params);
-        }else{
-            parent.setBackgroundColor(Color.parseColor("#595959"));
-        }
+        LinearLayout parent = (LinearLayout) ((ViewGroup) holder.sender.getParent()).getParent();
 
     }
 
