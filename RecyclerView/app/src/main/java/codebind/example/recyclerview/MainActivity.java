@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         layout = new ArrayList<>();
         messages = new Messages();
+        messages.setCurrname(name);
+
         setMessages();;
     //    layout.add(new Layout("Tom","Hellooo"));
     //    layout.add(new Layout("Jerry","Hii"));

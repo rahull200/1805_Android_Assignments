@@ -39,6 +39,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxWidth="320dp"
         android:id="@+id/typed_msg"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"

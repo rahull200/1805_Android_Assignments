@@ -15,14 +15,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Log.e("hii","hello");
 
         tom = (Button)findViewById(R.id.tom);
         jerry = (Button)findViewById(R.id.jerry);
 
         tom.setOnClickListener(this);
         jerry.setOnClickListener(this);
-      //  Toast.makeText(getApplicationContext(),"hii",Toast.LENGTH_LONG);
     }
 
     @Override

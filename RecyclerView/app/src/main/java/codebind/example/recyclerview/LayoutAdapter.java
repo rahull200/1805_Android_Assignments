@@ -18,7 +18,8 @@ import java.util.ArrayList;
 public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.LayoutviewHolder> {
     public int pos;
     private ArrayList<Layout> mlayout;
-    public static class LayoutviewHolder extends RecyclerView.ViewHolder{
+
+    public static class LayoutviewHolder extends RecyclerView.ViewHolder{ 
 
         public TextView sender;
         public TextView msg;
@@ -38,11 +39,32 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.Layoutview
     @Override
     public LayoutviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutviewHolder lvh=null;
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.messageto,parent,false);
-        lvh = new LayoutviewHolder(v);
+        View v=null;
+        if(viewType==0){
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.messageto,parent,false);
+        }else{
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.message,parent,false);
+        }
 
+        lvh = new LayoutviewHolder(v);
         return lvh;
     }
+
+
+    @Override
+    public int getItemViewType(int position) {
+
+        Messages messages = new Messages();
+        ArrayList<String> nm = new ArrayList<String>();
+        nm = messages.getName();
+    //    Log.e(nm.get(position),""+position);
+
+        if((nm.get(position)).equals(messages.getCurrname())){
+            return 0;
+        }
+        return 1;
+    }
+
 
     @Override
     public void onBindViewHolder(@NonNull LayoutviewHolder holder, int position) {
@@ -51,7 +73,6 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.Layoutview
         holder.sender.setText(currentlayout.getSender_name());
         holder.msg.setText(currentlayout.getSender_msg());
         LinearLayout parent = (LinearLayout) ((ViewGroup) holder.sender.getParent()).getParent();
-
     }
 
     @Override

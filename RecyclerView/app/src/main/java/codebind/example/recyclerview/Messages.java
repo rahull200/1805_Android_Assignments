@@ -5,7 +5,16 @@ import java.util.ArrayList;
 public class Messages {
     static ArrayList<String> msgs = new ArrayList<String>();
     static ArrayList<String> names = new ArrayList<String>();
+    static String currname;
     public Messages() {
+    }
+
+    public static String getCurrname() {
+        return currname;
+    }
+
+    public static void setCurrname(String currname) {
+        Messages.currname = currname;
     }
 
     public static ArrayList<String> getName() {
