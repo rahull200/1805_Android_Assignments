@@ -4,10 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class Home extends AppCompatActivity implements View.OnClickListener {
     Button tom,jerry;
@@ -26,17 +24,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.tom){
-            Intent intent = new Intent(this,MainActivity.class);
-            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra("name","tom");
+            Intent intent = new Intent(this, TomMain.class);
             startActivity(intent);
         }
         if(v.getId()==R.id.jerry){
-            Intent intent = new Intent(this,MainActivity.class);
-            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra("name","jerry");
+            Intent intent = new Intent(this,JerryMain.class);
             startActivity(intent);
         }
     }

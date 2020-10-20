@@ -5,17 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class TomMain extends AppCompatActivity implements View.OnClickListener {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter resadapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -23,24 +19,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<Layout> layout;
     EditText typedmsg;
     Button send;
-    String name;
-    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_tom_main);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        bundle = getIntent().getExtras();
-        name = bundle.getString("name");
-        getSupportActionBar().setTitle(name);
+        getSupportActionBar().setTitle("Tom");
 
         layout = new ArrayList<>();
         messages = new Messages();
 
         //Set name in action bar
-        messages.setCurrname(name);
+        messages.setCurrname("tom");
 
         setMessages();
 
@@ -72,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v.getId()==R.id.send){
             messages.setMsgs(typedmsg.getText().toString());
-            messages.setName(name);
+            messages.setName("tom");
 
             setMessages();
             typedmsg.setText("");
