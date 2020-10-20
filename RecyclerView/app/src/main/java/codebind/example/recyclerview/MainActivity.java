@@ -34,19 +34,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         bundle = getIntent().getExtras();
         name = bundle.getString("name");
+        getSupportActionBar().setTitle(name);
 
         layout = new ArrayList<>();
         messages = new Messages();
+
+        //Set name in action bar
         messages.setCurrname(name);
 
-        setMessages();;
-    //    layout.add(new Layout("Tom","Hellooo"));
-    //    layout.add(new Layout("Jerry","Hii"));
+        setMessages();
 
         typedmsg = (EditText)findViewById(R.id.typed_msg);
         send = (Button)findViewById(R.id.send);
         send.setOnClickListener(this);
-
 
     }
 
@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.send){
-        //    Log.e("hii","helo");
             messages.setMsgs(typedmsg.getText().toString());
             messages.setName(name);
 

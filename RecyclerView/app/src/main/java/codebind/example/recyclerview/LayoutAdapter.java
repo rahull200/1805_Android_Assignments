@@ -57,7 +57,6 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.Layoutview
         Messages messages = new Messages();
         ArrayList<String> nm = new ArrayList<String>();
         nm = messages.getName();
-    //    Log.e(nm.get(position),""+position);
 
         if((nm.get(position)).equals(messages.getCurrname())){
             return 0;
