@@ -70,6 +70,10 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.Layoutview
                         notifyItemInserted(position);
                         notifyItemRangeChanged(position, mlayout.size());
                         notifyDataSetChanged();
+
+
+                        Snackbar snackBar = Snackbar.make(holder.msg, tmp+" Added back", Snackbar.LENGTH_LONG);
+                        snackBar.show();
                     }
                 });
                 snackBar.show();
