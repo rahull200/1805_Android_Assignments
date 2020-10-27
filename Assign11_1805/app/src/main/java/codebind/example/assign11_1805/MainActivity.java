@@ -5,9 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import java.util.ArrayList;
 
@@ -15,39 +15,23 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter resadapter;
     private RecyclerView.LayoutManager layoutManager;
-    Messages messages;
-    ArrayList<Layout> layout;
-    EditText typedmsg;
-    Button send;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        layout = new ArrayList<>();
-        messages = new Messages();
+        Data data = new Data();
+        addData(data);
 
-        //Set name in action bar
-        messages.setCurrname("tom");
+        ArrayList<Layout> layout = new ArrayList<>();
+        ArrayList<String> names = new ArrayList<>();
 
-        messages.setName("tom");
+        names = data.getNames();
 
-        setMessages();
-
-
-    }
-
-
-
-    private void setMessages() {
-        ArrayList<String> msg = new ArrayList<String>();
-        ArrayList<String> nm = new ArrayList<String>();
-        msg = messages.getMsgs();
-        nm = messages.getName();
-        layout.clear();
-        for(int i=0;i<msg.size();i++){
-            layout.add(new Layout(nm.get(i),msg.get(i)));
+        for(int i=0;i<names.size();i++){
+            layout.add(new Layout(names.get(i),""));
         }
+
         recyclerView = (RecyclerView)findViewById(R.id.resview);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -55,7 +39,19 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(resadapter);
+
+        setData();
     }
 
+    private void setData() {
+        Button del = (Button)findViewById(R.id.msg);
+    }
+
+    private void addData(Data data) {
+        data.setNames("Ajay");
+        data.setNames("Viijay");
+        data.setNames("Sujay");
+        data.setNames("jay");
+    }
 
 }

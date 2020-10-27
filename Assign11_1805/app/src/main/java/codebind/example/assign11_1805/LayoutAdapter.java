@@ -3,19 +3,22 @@ package codebind.example.assign11_1805;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 
 public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.LayoutviewHolder> {
-    public int pos;
-    private ArrayList<Layout> mlayout;
 
-    public static class LayoutviewHolder extends RecyclerView.ViewHolder{ 
+    private ArrayList<Layout> mlayout;
+    Data data;
+    Layout tmpview;
+
+    public static class LayoutviewHolder extends RecyclerView.ViewHolder{
 
         public TextView sender;
         public TextView msg;
@@ -24,49 +27,55 @@ public class LayoutAdapter extends RecyclerView.Adapter<LayoutAdapter.Layoutview
             super(itemView);
             sender = itemView.findViewById(R.id.sender_name);
             msg = itemView.findViewById(R.id.msg);
+
         }
     }
 
     public LayoutAdapter(ArrayList<Layout> layout){
         mlayout = layout;
+
     }
 
     @NonNull
     @Override
     public LayoutviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutviewHolder lvh=null;
-        View v=null;
-        if(viewType==0){
-            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.message,parent,false);
-        }else{
-            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.message,parent,false);
-        }
-
-        lvh = new LayoutviewHolder(v);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false);
+        LayoutviewHolder lvh = new LayoutviewHolder(v);
         return lvh;
     }
 
-
     @Override
-    public int getItemViewType(int position) {
-
-        Messages messages = new Messages();
-        ArrayList<String> nm = new ArrayList<String>();
-        nm = messages.getName();
-
-        if((nm.get(position)).equals(messages.getCurrname())){
-            return 0;
-        }
-        return 1;
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull LayoutviewHolder holder, int position) {
-        pos = position;
+    public void onBindViewHolder(@NonNull final LayoutviewHolder holder, final int position) {
         Layout currentlayout =mlayout.get(position);
-        holder.sender.setText("hii");
-        holder.msg.setText(currentlayout.getSender_msg());
-        LinearLayout parent = (LinearLayout) ((ViewGroup) holder.sender.getParent()).getParent();
+        holder.sender.setText(currentlayout.getSender_name());
+        holder.msg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                data = new Data();
+                final String tmp = data.getdataPos(position);
+                data.delete(position);
+
+                tmpview = mlayout.get(position);
+                mlayout.remove(position);
+
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, mlayout.size());
+                notifyDataSetChanged();
+
+                Snackbar snackBar = Snackbar.make(holder.msg, tmp+" Deleted", Snackbar.LENGTH_LONG) .setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        data.add(position,tmp);
+                        mlayout.add(position,tmpview);
+                        notifyItemInserted(position);
+                        notifyItemRangeChanged(position, mlayout.size());
+                        notifyDataSetChanged();
+                    }
+                });
+                snackBar.show();
+            }
+        });
+
     }
 
     @Override

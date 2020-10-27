@@ -10,15 +10,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76e9f896-0982-40c9-bf90-1b9e69d97888" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Assign10_Webview/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Assign10_Webview/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RecyclerView.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/androidTest/java/codebind/example/assign11_1805/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/java/codebind/example/assign11_1805/Layout.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/java/codebind/example/assign11_1805/LayoutAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/java/codebind/example/assign11_1805/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/java/codebind/example/assign11_1805/Messages.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/layout/message.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/app/src/test/java/codebind/example/assign11_1805/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assign11_1805/settings.gradle" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_24" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -53,7 +94,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../1805_Assignment8_Pojo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
@@ -129,7 +170,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c1f3b338-596b-429d-829c-28f6da8a0c0e" name="Default Changelist" comment="" />
+      <changelist id="76e9f896-0982-40c9-bf90-1b9e69d97888" name="Default Changelist" comment="" />
       <created>1601979249243</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -158,10 +199,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="349" y="167" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1602605530219" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1603271718700">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1603564908682">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603271718700" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603564908682" />
     <state width="1340" height="194" key="GridCell.Tab.0.bottom" timestamp="1603380250943">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
