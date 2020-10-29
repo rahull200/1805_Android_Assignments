@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/msgcard"
-    android:background="@color/colorPrimary"
+    android:background="@color/blue"
     android:layout_margin="10dp"
     android:orientation="horizontal"
     android:layout_gravity=""
     android:padding="10dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -27,26 +27,18 @@
             android:textSize="10pt"
             android:padding="2dp"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="right"
-        android:layout_margin="4dp">
-
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/msg"
-            android:background="@color/red"
-            android:text="DELETE"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/del"
+            android:background="@drawable/ic_baseline_delete_24"
             android:textColor="@color/white"
+            android:layout_alignParentRight="true"
             android:textSize="7pt"
             android:padding="2dp"/>
+    </RelativeLayout>
 
-    </LinearLayout>
+
 
 
 
