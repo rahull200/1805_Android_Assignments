@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EditPerson"
+    android:padding="20dp">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/formtitle"
+        android:gravity="center"
+        android:layout_margin="40dp"
+        android:textSize="28dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="@string/editname"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:id="@+id/editnm"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:layout_margin="20dp"
+            android:drawablePadding="4dp"/>
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:hint="@string/editgender"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:id="@+id/editgender"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:layout_margin="20dp"
+        android:focusable="false"
+        android:drawablePadding="4dp"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/editbtnsub"
+        android:paddingVertical="20dp"
+        android:id="@+id/edit"
+        android:layout_margin="20dp"/>
+
+</LinearLayout>

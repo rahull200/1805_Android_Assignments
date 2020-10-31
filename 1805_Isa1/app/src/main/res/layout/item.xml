@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/msgcard"
+    android:background="@color/blue"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:layout_gravity=""
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="left"
+        android:layout_margin="4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sender_name"
+            android:text="Ram"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="10pt"
+            android:padding="2dp"/>
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/del"
+            android:background="@drawable/ic_baseline_delete_24"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            android:textSize="7pt"
+            android:padding="2dp"/>
+    </RelativeLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gender"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:layout_marginLeft="2dp"
+        android:id="@+id/gender"/>
+
+    <Button
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/edit"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/ic_baseline_edit_24"
+        android:text=""/>
+
+</RelativeLayout>
+
+
+
+</LinearLayout>

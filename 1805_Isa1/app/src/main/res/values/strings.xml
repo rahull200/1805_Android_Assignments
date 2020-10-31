@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">assign11_1805</string>
+    <string name="gender">Male</string>
+    <string name="edittname">EDIT</string>
+    <string name="editname">Enter name</string>
+    <string name="editgender">Enter gender</string>
+    <string name="formtitle">Edit Person</string>
+    <string name="editbtnsub">EDIT</string>
+</resources>
