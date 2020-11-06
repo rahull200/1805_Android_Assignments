@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/msgcard"
+    android:background="@color/item"
+    android:padding="10dp"
+    android:layout_margin="10dp">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="4dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/emp_code"
+        android:textSize="12pt"
+        android:text="101"
+        android:textColor="@color/white"
+        android:layout_alignParentRight="true"
+        android:padding="2dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lname"
+        android:text="keane"
+        android:textStyle="bold"
+        android:layout_marginLeft="3dp"
+        android:textColor="@color/white"
+        android:textSize="11pt"
+        android:padding="2dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fname"
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/lname"
+        android:textColor="@color/white"
+        android:text="Roy"
+        android:textSize="11pt"
+        android:padding="2dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rs"
+        android:id="@+id/sign"
+        android:padding="2dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="40dp"
+        android:textSize="13pt"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:id="@+id/salary"
+        android:text="1000"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/sign"
+        android:layout_marginTop="40dp"
+        android:textSize="13pt"
+        android:padding="2dp"/>
+
+</RelativeLayout>
+</LinearLayout>
