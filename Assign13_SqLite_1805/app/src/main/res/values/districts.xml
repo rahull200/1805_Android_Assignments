@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dist">
+        <item>North Goa</item>
+        <item>South Goa</item>
+    </string-array>
+
+</resources>
