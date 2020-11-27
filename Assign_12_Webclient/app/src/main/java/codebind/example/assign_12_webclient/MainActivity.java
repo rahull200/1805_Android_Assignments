@@ -68,6 +68,9 @@ public class MainActivity extends AppCompatActivity{
         getPosts postsManager = new getPosts(this);
         postsManager.execute(fetchURL);
 
+
+
+
     }
 
 
