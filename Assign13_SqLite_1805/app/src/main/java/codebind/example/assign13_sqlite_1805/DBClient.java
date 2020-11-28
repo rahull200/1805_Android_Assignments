@@ -26,12 +26,15 @@ public class DBClient {
     }
 
     //Add user
-    public void addUser(String name,String num,String email,String pass){
+    public void addUser(String name,String num,String email,String pass,String gender,String district,String dob){
         ContentValues params = new ContentValues();
         params.put("name",name);
         params.put("num",num);
         params.put("email",email);
         params.put("pass",pass);
+        params.put("gender",gender);
+        params.put("district",district);
+        params.put("dob",dob);
         database.insert("users",null,params);
     }
 

@@ -14,8 +14,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -71,7 +76,10 @@ public class MainActivity extends AppCompatActivity {
                 buffer.append("Name :"+ data.getString(1)+"\n");
                 buffer.append("Number :"+ data.getString(2)+"\n");
                 buffer.append("Email :"+ data.getString(3)+"\n");
-                buffer.append("Password :"+ data.getString(4)+"\n\n");
+                buffer.append("Password :"+ data.getString(4)+"\n");
+                buffer.append("Gender :"+ data.getString(5)+"\n");
+                buffer.append("District :"+ data.getString(6)+"\n");
+                buffer.append("Date of Birth :"+ data.getString(7)+"\n\n");
             }
             // Show all data
             showMessage("User Data",buffer.toString());
@@ -92,9 +100,28 @@ public class MainActivity extends AppCompatActivity {
         String email = emailtxt.getText().toString();
         String pass1 = passtxt.getText().toString();
         String pass2 = confirmpasstxt.getText().toString();
-        if(!name.isEmpty()&&!num.isEmpty()&&!email.isEmpty()&&!pass1.isEmpty()&&!pass2.isEmpty()){
+
+        //Gender
+        RadioGroup genders = (RadioGroup)findViewById(R.id.rg);
+        int selectedID = genders.getCheckedRadioButtonId();
+        RadioButton selectedGender = (RadioButton)findViewById(selectedID);
+        String gender = "";
+        if(selectedGender!=null){
+            gender = selectedGender.getText().toString();
+        }
+        //District
+        Spinner districts = (Spinner)findViewById(R.id.spin);
+        String selectedDistrict = (String) districts.getSelectedItem();
+
+        //DOB
+        TextInputEditText calender = (TextInputEditText)findViewById(R.id.calender);
+        String dob = calender.getText().toString();
+
+        if(!name.isEmpty()&&!num.isEmpty()&&!email.isEmpty()
+                &&!pass1.isEmpty()&&!pass2.isEmpty()&&!gender.isEmpty()&&!dob.isEmpty()){
+
             if(pass1.equals(pass2)){
-                dbClient.addUser(name,num,email,pass1);
+                dbClient.addUser(name,num,email,pass1,gender,selectedDistrict,dob);
                 Toast.makeText(getApplicationContext(),"Data added successfully",Toast.LENGTH_LONG).show();
 
             }else{

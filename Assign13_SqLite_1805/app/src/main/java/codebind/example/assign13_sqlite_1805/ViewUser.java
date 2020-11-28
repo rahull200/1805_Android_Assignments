@@ -86,9 +86,6 @@ public class ViewUser extends Fragment implements View.OnClickListener {
             }
         });
 
-
-
-
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -106,7 +103,7 @@ public class ViewUser extends Fragment implements View.OnClickListener {
             DatePickerDialog db = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
+                    calender.setText(""+dayOfMonth+"-"+month+"-"+year);
                 }
             }, 2020, 9, 25);
             db.show();

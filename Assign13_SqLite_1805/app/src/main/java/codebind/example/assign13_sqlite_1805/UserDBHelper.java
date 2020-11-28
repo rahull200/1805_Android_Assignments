@@ -13,7 +13,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "create table users (id INTEGER PRIMARY KEY AUTOINCREMENT,name text,num text,email text,pass text)";
+        String query = "create table users (id INTEGER PRIMARY KEY AUTOINCREMENT,name text,num text,email text,pass text,gender text,district text,dob text)";
         db.execSQL(query);
     }
 
