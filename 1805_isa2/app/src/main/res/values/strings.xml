@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">1805_isa2</string>
+    <string name="season">Season</string>
+    <string name="name">Name:</string>
+    <string name="nickname">NickName:</string>
+    <string name="portrayed">Portrayed:</string>
+    <string name="editbtn">EDIT</string>
+</resources>
